@@ -36,6 +36,11 @@ public class Game {
 		scoreDisplay = new ScoreDisplay(new Point(0.85f, -0.5f));
 		scoreDisplay.updateScore(score);
 	}
+	
+	public Game(String s){
+		team1 = new Team();
+		team2 = new Team();
+	}
 
 	//throws the ball to a random player on the thrower's team for a ThrowIn
 	public void throwIn(ArrayList<Player> players, Player p){

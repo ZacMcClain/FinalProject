@@ -40,10 +40,15 @@ public class Team {
 		this.fieldHalf = half;
 	}
 
-	// this constructor is used to make an empty static team that is only used to the store a team that is already in use
 	public Team() {	
-		
-		
+		for (int i = 0; i < NUMBER_OF_PLAYERS; i++){
+
+			players.add(new Player(i, 100));
+			// set player 0 to the goalie
+			if (i == 0){
+				((Player)players.get(0)).setGoalie();
+			}
+		}
 	}
 	
 	// to set players in the correct position depending on a enum FormationType

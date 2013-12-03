@@ -22,6 +22,7 @@ public class Player {
 	private float[] ballHolderColor;
 
 	private BallModel ball;
+	private float x, y;
 
 	public Player(int number, int stamina, Point p, float[] tint) {
 		super();
@@ -31,14 +32,32 @@ public class Player {
 		scoredPoints = 0;
 		display = new PlayerModel(p, tint);
 		teamColor = tint;
+		x = this.getDisplay().getRect().getX();
+		y = this.getDisplay().getRect().getY();
 		updateFieldArea();
 	}
+	
+	// used in testing
+	public Player(int number, int stamina) {
+		super();
+		this.number = number;
+		this.stamina = stamina;
+		scoredPoints = 0;
+		x = 0f;
+		y = 0f;
+	}
+
 
 	public void scoreGoal() {
 		scoredPoints++;
 		setBall(null);
 	}
-
+	
+	public void testScoreGoal() {
+		scoredPoints++;
+		testSetBall(true);
+	}
+	
 	public void setGoalie(){
 		goalie = true;
 	}
@@ -59,6 +78,12 @@ public class Player {
 		this.stamina -= stamina;
 		updateFieldArea();
 	}
+	
+	public void testmove(float x, float y, int stamina){
+		this.stamina -= stamina;
+		this.x = x;
+		this.y = y;
+	}
 
 	//used to pass the ball form one player to another.
 	public void pass(Player player){
@@ -68,6 +93,14 @@ public class Player {
 			player.display.setTint(ballHolderColor);
 		}
 
+	}
+	
+	
+	public void testPass(Player player){
+		if(hasBall){
+			hasBall = false;
+			player.testSetBall(true);
+		}
 	}
 
 	// used to tell players where the important areas of the field are
@@ -112,6 +145,10 @@ public class Player {
 		else
 			display.setTint(teamColor);
 		this.ball = arg1ball;
+	}
+	
+	public void testSetBall(boolean hasBall){
+		this.hasBall = hasBall;
 	}
 
 	public boolean isOffside(){
@@ -191,5 +228,13 @@ public class Player {
 	
 	public float getXRight(){
 		return display.getRect().getX()+display.getRect().getWidth()/2;
+	}
+	
+	public float getX() {
+		return x;
+	}
+
+	public float getY() {
+		return y;
 	}
 }
