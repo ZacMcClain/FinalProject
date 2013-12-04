@@ -1,6 +1,5 @@
 package coachingTools;
-
-import core.GameEngine;
+ 
 import graphics.frontend.BallModel;
 import graphics.frontend.PlayerModel;
 import util.Point;

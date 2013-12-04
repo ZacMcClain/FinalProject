@@ -41,8 +41,8 @@ public class Team {
 	}
 
 	public Team() {	
-		for (int i = 0; i < NUMBER_OF_PLAYERS; i++){
-
+		players = new ArrayList<Player>();
+		for (int i = 0; i < NUMBER_OF_PLAYERS; i++){	
 			players.add(new Player(i, 100));
 			// set player 0 to the goalie
 			if (i == 0){
@@ -129,7 +129,6 @@ public class Team {
 		return players;
 	}
 	
-
 	
 	public int getNumberOfPlayers() {
 		return players.size();

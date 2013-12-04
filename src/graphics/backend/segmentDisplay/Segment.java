@@ -1,12 +1,6 @@
 package graphics.backend.segmentDisplay;
 
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL13;
-
-import graphics.backend.Texture;
 import graphics.frontend.GuiElement;
-import graphics.quadrangle.Dynamic;
-import util.Point;
 import util.Rectangle;
 
 public abstract class Segment extends GuiElement{

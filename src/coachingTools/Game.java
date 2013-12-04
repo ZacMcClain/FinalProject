@@ -1,14 +1,12 @@
 package coachingTools;
 
-import graphics.frontend.BackgroundImage;
+import graphics.frontend.BackgroundImage; 
 import graphics.frontend.BallModel;
 import graphics.frontend.ScoreDisplay;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import coachingTools.Player.FieldSide;
-import coachingTools.Player.SoccerArea;
 import coachingTools.Team.FormationType;
 import core.GameEngine;
 import util.Point;
@@ -44,28 +42,9 @@ public class Game {
 
 	//throws the ball to a random player on the thrower's team for a ThrowIn
 	public void throwIn(ArrayList<Player> players, Player p){
-		p.setBall(ball);
-		int num = GameEngine.rgen.nextInt(11);
-
-		if(players.get(num) != p){
-			p.pass(players.get(num));
-		} else {
-			if(num < 10){
-				num ++;
-			} else {
-				num--;
-			}
-			p.pass(players.get(num));
-		}
-	}
-
-	//kicks the ball to a random player from an arrayList of players (a goal kick is made by the goalie)
-	public void goalKick( ArrayList<Player> players, Player p){
-
-		if (((Player)p).isGoalie()){
+		try{
 			p.setBall(ball);
 			int num = GameEngine.rgen.nextInt(11);
-
 			if(players.get(num) != p){
 				p.pass(players.get(num));
 			} else {
@@ -75,6 +54,58 @@ public class Game {
 					num--;
 				}
 				p.pass(players.get(num));
+			}
+		}catch(NullPointerException e){
+			
+			p.testSetBall(true);
+			Random rand = new Random();
+			int num = rand.nextInt(11);
+			if(players.get(num) != p){
+				p.testPass(players.get(num));
+			} else {
+				if(num < 10){
+					num ++;
+				} else {
+					num--;
+				}
+				p.testPass(players.get(num));
+			}
+		}
+	}
+
+	//kicks the ball to a random player from an arrayList of players (a goal kick is made by the goalie)
+	public void goalKick( ArrayList<Player> players, Player p){
+
+		if (((Player)p).isGoalie()){
+			try{
+				p.setBall(ball);
+				int num = GameEngine.rgen.nextInt(11);
+
+				if(players.get(num) != p){
+					p.pass(players.get(num));
+				} else {
+					if(num < 10){
+						num ++;
+					} else {
+						num--;
+					}
+					p.pass(players.get(num));
+				}
+			}catch(NullPointerException e){
+
+				p.testSetBall(true);
+				Random rand = new Random();
+				int num = rand.nextInt(11);
+				if(players.get(num) != p){
+					p.testPass(players.get(num));
+				} else {
+					if(num < 10){
+						num ++;
+					} else {
+						num--;
+					}
+					p.testPass(players.get(num));
+				}
 			}
 		}
 	}
@@ -110,20 +141,35 @@ public class Game {
 
 	//kicks the ball to a random player from an arrayList of players to start a round
 	public void kickOff(Player p, ArrayList<Player> players){
-		p.setBall(ball);
-		
-		int num = GameEngine.rgen.nextInt(11);
-
-		if(players.get(num) != p){
-			p.pass(players.get(num));
-		} else {
-			if(num < 10){
-				num ++;
+		try{
+			p.setBall(ball);
+			int num = GameEngine.rgen.nextInt(11);
+			if(players.get(num) != p){
+				p.pass(players.get(num));
 			} else {
-				num--;
-			}
+				if(num < 10){
+					num ++;
+				} else {
+					num--;
+				}
 
-			p.pass(players.get(num));
+				p.pass(players.get(num));
+			}
+		}catch(NullPointerException e){
+
+			p.testSetBall(true);
+			Random rand = new Random();
+			int num = rand.nextInt(11);
+			if(players.get(num) != p){
+				p.testPass(players.get(num));
+			} else {
+				if(num < 10){
+					num ++;
+				} else {
+					num--;
+				}
+				p.testPass(players.get(num));
+			}
 		}
 
 	}
@@ -284,7 +330,6 @@ public class Game {
 		ArrayList<Player> players2 = team2.getPlayers();
 
 		Player player = getPlayerWithBall();
-		Team team = getTeamWithBall();
 
 		dontMoveOnTop();
 

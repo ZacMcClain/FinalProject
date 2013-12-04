@@ -1,15 +1,9 @@
 package graphics.backend.segmentDisplay;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.Arrays;
 
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL13;
-
-import graphics.backend.Texture;
-import graphics.quadrangle.Dynamic;
 import util.Point;
-import util.Rectangle;
 
 public class SevenSegmentDisplay{
 	private boolean[] seg;
@@ -104,4 +98,31 @@ public class SevenSegmentDisplay{
 				segments.get(i).turnOff();
 		}
 	}
+	
+	// ------ getters and setters ------ \\
+
+	public Point getCenter() {
+		return center;
+	}
+
+	public void setCenter(Point center) {
+		this.center = center;
+	}
+
+	public float[] getTintOn() {
+		return tintOn;
+	}
+
+	public void setTintOn(float[] tintOn) {
+		this.tintOn = tintOn;
+	}
+
+	public float[] getTintOff() {
+		return tintOff;
+	}
+
+	public void setTintOff(float[] tintOff) {
+		this.tintOff = tintOff;
+	}
+	
 }

@@ -1,5 +1,4 @@
 package graphics.backend.segmentDisplay;
-import graphics.backend.Texture;
 import util.Point;
 import util.Rectangle;
 

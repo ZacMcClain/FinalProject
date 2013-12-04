@@ -1,7 +1,6 @@
 package graphics.backend.segmentDisplay;
-import util.Point;
+import util.Point; 
 import util.Rectangle;
-import graphics.backend.Texture;
 
 public class SegmentVertical extends Segment{
 	private static final float width = SCALE/10f;

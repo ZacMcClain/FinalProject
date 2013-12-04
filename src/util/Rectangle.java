@@ -10,7 +10,7 @@ public class Rectangle implements Region{
 		ret[0] = new float[]{x-width/2, y+height/2};
 		ret[1] = new float[]{x-width/2, y-height/2};
 		ret[3] = new float[]{x+width/2, y-height/2};
-		ret[4] = new float[]{x+width/2, y+height/2};
+		//ret[4] = new float[]{x+width/2, y+height/2};
 		return ret;
 	}
 	

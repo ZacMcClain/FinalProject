@@ -1,9 +1,6 @@
 package core;
 
-import graphics.frontend.BackgroundImage;
-import graphics.frontend.BallModel;
 import graphics.frontend.Button; 
-import graphics.frontend.ScoreDisplay;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -20,7 +17,6 @@ import org.lwjgl.opengl.PixelFormat;
 
 import util.Clamp;
 import util.MouseEvent;
-import util.Point;
 import util.Rectangle;
 import coachingTools.Game;
 import coachingTools.Player;
@@ -34,7 +30,7 @@ public class GameEngine {
 	public static Team team;
 	public static Game game;
 	public static Random rgen;
-	
+
 	public static Button passButton, goButton;
 
 	public static void main(String[] args) {
@@ -67,7 +63,7 @@ public class GameEngine {
 	}
 
 
-	
+
 	// sets up the game by calling the setup fnx (in the renderEngin), openGL3 fnx, and creating an ArrayList of buttons 
 
 	public static void setup(){
@@ -84,7 +80,7 @@ public class GameEngine {
 
 	private static void createBackgroundandButtons() {
 		createButtons(game);
-		
+
 		game = new Game();
 		team = Game.getTeam1();
 		Game.getTeam1().getInFormation(Team.FormationType.FourFourTwo);
@@ -100,7 +96,7 @@ public class GameEngine {
 				if(goButton.isDown())goButton.trigger.fire();
 				count -= 20;
 			}
-			
+
 			handleMouse();							//	handleMouse() checks for mouse activity, and if there is any, dispatches the events to the GUI
 			RenderEngine.render();					//	Draws final output onto the back framebuffer
 			Display.sync(60);						//	Limits the flip speed to prevent tearing and to sync with the diplay's Hertz
@@ -112,17 +108,17 @@ public class GameEngine {
 
 	}
 
-	
+
 	// used to get and deal with mouse clicks
 	public static float getMouseX(){
 		return Clamp.clampX(Mouse.getX());
 	}
-	
+
 	// used to get and deal with mouse clicks
 	public static float getMouseY(){
 		return Clamp.clampY(Mouse.getY());
 	}
-	
+
 	// used to get and deal with mouse clicks
 
 	public static void handleMouse(){
@@ -131,7 +127,7 @@ public class GameEngine {
 		int mx = Mouse.getEventX();
 		int my = Mouse.getEventY();
 
-		
+
 		while(Mouse.next()){
 			if(Mouse.getEventButton() == 0){
 				if(Mouse.isButtonDown(0)){
@@ -162,7 +158,7 @@ public class GameEngine {
 		}
 	}
 
-	
+
 	//Creates buttons for control of the game
 	private static void createButtons(final Game game) {
 		//pass buttons
@@ -173,17 +169,17 @@ public class GameEngine {
 		goButton.setSticky(true);
 		//formation buttons
 		new Button(new Rectangle(.85f, .75f, .25f, .13f), "resources/bluebutton442.png", "resources/redbutton442.png", "resources/bluebutton442.png", (new util.PressAction(){public void fire(){
-				team.getInFormation(Team.FormationType.FourFourTwo);
-				Game.getTeam2().getInFormation(Team.FormationType.genRnd());};}));
+			team.getInFormation(Team.FormationType.FourFourTwo);
+			Game.getTeam2().getInFormation(Team.FormationType.genRnd());};}));
 		new Button(new Rectangle(.85f, .55f, .25f, .13f), "resources/bluebutton433.png", "resources/redbutton433.png", "resources/bluebutton433.png", (new util.PressAction(){public void fire(){
-				team.getInFormation(Team.FormationType.FourThreeThree);
-				Game.getTeam2().getInFormation(Team.FormationType.genRnd());};}));
+			team.getInFormation(Team.FormationType.FourThreeThree);
+			Game.getTeam2().getInFormation(Team.FormationType.genRnd());};}));
 		new Button(new Rectangle(.85f, .35f, .25f, .13f), "resources/bluebutton343.png", "resources/redbutton343.png", "resources/bluebutton343.png", (new util.PressAction(){public void fire(){
-				team.getInFormation(Team.FormationType.ThreeFourThree);
-				Game.getTeam2().getInFormation(Team.FormationType.genRnd());};}));
+			team.getInFormation(Team.FormationType.ThreeFourThree);
+			Game.getTeam2().getInFormation(Team.FormationType.genRnd());};}));
 		new Button(new Rectangle(.85f, .15f, .25f, .13f), "resources/bluebutton352.png", "resources/redbutton352.png", "resources/bluebutton352.png", (new util.PressAction(){public void fire(){
-				team.getInFormation(Team.FormationType.ThreeFiveTwo);
-				Game.getTeam2().getInFormation(Team.FormationType.genRnd());};}));
+			team.getInFormation(Team.FormationType.ThreeFiveTwo);
+			Game.getTeam2().getInFormation(Team.FormationType.genRnd());};}));
 	}
 
 
@@ -193,7 +189,6 @@ public class GameEngine {
 
 	private static void pass(){
 		Player ballHolder = game.getPlayerWithBall();
-		Team teamWithBall = game.getTeamWithBall();
 
 		if(ballHolder != null) ballHolder.setBall(null);
 		game.duringPass = true;
@@ -202,10 +197,9 @@ public class GameEngine {
 
 	//give the move button functionality
 	private static void move(){
-		
-		
+
 		game.go();
-		
+
 	}
 
 

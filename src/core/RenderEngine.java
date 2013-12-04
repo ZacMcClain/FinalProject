@@ -1,12 +1,9 @@
 package core;
 
-import graphics.backend.TextureManager;
+import graphics.backend.TextureManager; 
 import graphics.backend.segmentDisplay.SegmentHorizontal;
 import graphics.backend.segmentDisplay.SegmentVertical;
-import graphics.backend.segmentDisplay.SevenSegmentDisplay;
 import graphics.frontend.BackgroundImage;
-import graphics.frontend.BallModel;
-import graphics.frontend.Button;
 import graphics.frontend.GuiElement;
 import graphics.frontend.PlayerModel;
 import graphics.quadrangle.Quad;
@@ -17,14 +14,6 @@ import java.io.IOException;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
-
-
-
-import coachingTools.Game;
-import coachingTools.Player;
-import coachingTools.Team;
-import util.Point;
-import util.Rectangle;
 
 public class RenderEngine {
 	public static Quad quads;
